@@ -1,105 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>doveSono</title>
-    <!--
-      <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    -->
-    <link rel="stylesheet" href="./lib/pure-min.css">
-    <script type="text/javascript" charset="utf-8" src="./lib/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="./lib/doveSono.js"></script>
-  </head>
-  <body onload="onLoad()">
-    <div>
-      <center>
-         <form class="pure-form">
-              <fieldset>
-                  <table class="pure-table" width="100%">
-                  <thead>
-                  <tr>
-                     <th colspan="2">Url per servizio Ajax</th>
-                  </tr>
-                  </thead>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Seguimi</title>
+        <link rel="stylesheet" href="./lib/seguimi.css">
+        <link rel="stylesheet" href="./lib/pure-min.css">
+        <script type="text/javascript" charset="utf-8" src="./lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./lib/seguimi.js"></script>
+    </head>
+    <body>
+        <div>
+          <form class="pure-form">
+                <fieldset>
+                    <table class="pure-table" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="50%">
+                                    Url per servizio Ajax
+                                </th>
+                                <th align="center">
+                                    <img src="res/gpsIcon.png" alt="" id="gpsIcon" height="16" width="16" />
+                                    <img src="res/ajaxIcon.png" alt="" id="ajaxIcon" height="16" width="16" />
+                                    <img src="res/on_submit.gif" alt="" id="submitIcon" height="16" width="16" />
+                                </th>
+                            </tr>
+                        </thead>
 
-                  <tbody>
-                  <tr>
-                     <td align="center" colspan="2">
-                        <input id="urlAjax" type="url"  style="width:100%" value="" onChange="changeField('urlAjax')"> <br>
-                     </td>
-                  </tr>
-                  </tbody>
-
-                  <thead>
-                  <tr>
-                     <th>Rileva</th>
-                     <th>Invia</th>
-                  </tr>
-                  </thead>
-
-                  <tbody>
-                  <tr>
-                     <td align="center">
-                          <select id="elapsedTimeGet" onChange="changeField('elapsedTimeGet')">
-                              <option value =  "1000" >01 Sec</option>
-                              <option value =  "2000" >02 Sec</option>
-                              <option value =  "5000" >05 Sec</option>
-                              <option value = "10000" >10 Sec</option>
-                              <option value = "15000" >15 Sec</option>
-                              <option value = "30000" >30 Sec</option>
-                              <option value = "60000" >1 Min</option>
-                              <option value = "120000">2 Min</option>
-                              <option value = "300000">5 Min</option>
-                          </select>
-                    </td>
-                    <td align="center">
-                          <select id="elapsedTimeSend" onChange="changeField('elapsedTimeSend')">
-                              <option value =  "1000" >01 Sec</option>
-                              <option value =  "2000" >02 Sec</option>
-                              <option value =  "5000" >05 Sec</option>
-                              <option value = "10000" >10 Sec</option>
-                              <option value = "15000" >15 Sec</option>
-                              <option value = "30000" >30 Sec</option>
-                              <option value = "60000" >1 Min</option>
-                              <option value = "120000">2 Min</option>
-                              <option value = "300000">5 Min</option>
-                          </select>
-                    </td>
-                  </tr>
-                  </tbody>
-                 <thead>
-                  <tr>
-                     <th>Rilevati
-                     <img src="res/Gps.png" alt="" id="gpsIcon" height="16" width="16" /></th>
-                     <th>Inviati
-                     <img src="res/ajax.png" alt="" id="ajaxIcon" height="16" width="16" /></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td id="counterGet" align="center">   0
-                    </td>
-                    <td  id="counterSend"  align="center"> 0
-                    </td>
-                  </tr>
-               </tbody>
-              </table>
-           </fieldset>
-         </form>
-     </center>
-    </div>
-    <div>
-      <center>
-        <button class="pure-button" onclick="onStart()" style="width:30%;"> START </button>
-        <button class="pure-button" onclick="onStop(1)" style="width:30%;"> PAUSE </button>
-        <button class="pure-button" onclick="onStop(0)" style="width:30%;"> STOP </button>
-     </center>
-    </div>
-    <div>
-    <center><img src="res/on_submit.gif" alt="" id="submitIcon" height="16" width="16" />
-       
-       <P id="currentPosition" style="width:100%"></p>
-     </center>
-    </div>
-  </body>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <input id="urlAjax" type="url"  style="width:100%" value="http://www.bacigalupo.it/cercariccardo/track.php" onChange="changeField('urlAjax')">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Rileva</th>
+                                <th>Invia</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="elapsedTimeGet" onChange="changeField('elapsedTimeGet')">
+                                        <option value =  "1000" >01 Sec</option>
+                                        <option value =  "2000" >02 Sec</option>
+                                        <option value =  "5000" >05 Sec</option>
+                                        <option value = "10000" >10 Sec</option>
+                                        <option value = "15000" >15 Sec</option>
+                                        <option value = "30000" >30 Sec</option>
+                                        <option value = "60000" >1 Min</option>
+                                        <option value = "120000">2 Min</option>
+                                        <option value = "300000">5 Min</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select id="elapsedTimeSend" onChange="changeField('elapsedTimeSend')">
+                                        <option value =  "1000" >01 Sec</option>
+                                        <option value =  "2000" >02 Sec</option>
+                                        <option value =  "5000" >05 Sec</option>
+                                        <option value = "10000" >10 Sec</option>
+                                        <option value = "15000" >15 Sec</option>
+                                        <option value = "30000" >30 Sec</option>
+                                        <option value = "60000" >1 Min</option>
+                                        <option value = "120000">2 Min</option>
+                                        <option value = "300000">5 Min</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Rilevati</th>
+                                <th>Inviati</th>
+                            </tr>
+                            <tr>
+                                <td id="counterGet" >   0
+                                </td>
+                                <td id="counterSend"> 0
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <button id="idBtnStart" class="pure-button" onclick="onStart()" style="width:49%;"> START </button>
+            <button id="idBtnStop" class="pure-button" onclick="onStop(0)" style="width:49%;"> STOP </button>
+        </div>
+        <div id="currentPosition">
+        </div>
+    </body>
 </html>
